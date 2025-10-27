@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Салон штор «Беладонна»</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <div class="grid-container">
+        <div class="h">
+            <div class="header-container">
+                <div class="header-box"><img src="../images/logo-belladone2025x2.png" alt="Пошив штор, салон – «Belladone»"></div>
+                <div class="header-box">
+                    <div class="header-text">Салон штор «Беладонна»</div>
+                </div>
+                <div class="header-box">
+                    <button class="auth-btn" onclick="window.location.href='registration.html'">Войти</button>
+                </div>
+            </div>
+        </div>
+        <div class="c">
+            <div class="login-container">
+                <div class="login-form">
+                    <h2>Вход в аккаунт</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Электронная почта *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Пароль *</label>
+                            <input type="password" id="password" name="password" required placeholder="Введите ваш пароль">
+                            <span class="error-message" id="passwordError"></span>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="rememberMe" name="rememberMe">
+                                <label for="rememberMe">Запомнить меня</label>
+                            </div>
+                            <a href="forgot-password.html" class="forgot-password">Забыли пароль?</a>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Войти</button>
+                        
+                        <div class="register-link">
+                            Ещё нет аккаунта? <a href="registration.html" class="link">Зарегистрируйтесь</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="f">© 2025 Салон штор "Беладонна". Все права защищены.</div>
+        <div class="n">
+            <a href="../index.html">Главная</a><br>
+            <a href="./catalog.html">Каталог</a><br>
+            <a href="./contacts.html">Контакты</a><br>
+            <a href="./about.html">О нас</a>
+        </div>
+    </div>
+
+    <script src="../scripts/login.js"></script>
+</body>
+</html>

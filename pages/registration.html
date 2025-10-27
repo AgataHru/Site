@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - Салон штор «Беладонна»</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <div class="grid-container">
+        <div class="h">
+            <div class="header-container">
+                <div class="header-box"><img src="../images/logo-belladone2025x2.png" alt="Пошив штор, салон – «Belladone»"></div>
+                <div class="header-box">
+                    <div class="header-text">Салон штор «Беладонна»</div>
+                </div>
+                <div class="header-box">
+                    <button class="auth-btn" onclick="window.location.href='registration.html'">Войти</button>
+                </div>
+            </div>
+        </div>
+        <div class="c">
+            <div class="registration-container">
+                <div class="registration-form">
+                    <h2>Регистрация</h2>
+                    <form id="registrationForm">
+                        <div class="form-group">
+                            <label for="firstName">Имя *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                            <span class="error-message" id="firstNameError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lastName">Фамилия *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                            <span class="error-message" id="lastNameError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Электронная почта *</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+7 (XXX) XXX-XX-XX">
+                            <span class="error-message" id="phoneError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Пароль *</label>
+                            <input type="password" id="password" name="password" required>
+                            <span class="error-message" id="passwordError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Подтверждение пароля *</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <span class="error-message" id="confirmPasswordError"></span>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                            <label for="agreeTerms">
+                                Я соглашаюсь с <a href="#" class="link">условиями использования</a> и 
+                                <a href="#" class="link">политикой конфиденциальности</a> *
+                            </label>
+                            <span class="error-message" id="agreeTermsError"></span>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Подписаться на рассылку новостей и акций</label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Зарегистрироваться</button>
+                        
+                        <div class="login-link">
+                            Уже есть аккаунт? <a href="login.html" class="link">Войдите</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="f">© 2025 Салон штор "Беладонна". Все права защищены. 
+            <br>Контактный номер телефона компании: +7 (495) 021-87-36 
+            <br>Адрес: 127247, Москва, Дмитровское шоссе, 100, строение 2
+            <br>Email: info@belladone.ru</div>
+        <div class="n">
+            <a href="../index.html">Главная</a><BR>
+            <a href="./catalog.html">Каталог</a><BR>
+            <a href="./contacts.html">Контакты</a><BR>
+            <a href="./about.html">О нас</a>
+        </div>
+    </div>
+
+    <script src="../scripts/register.js"></script>
+</body>
+</html>
