@@ -20,6 +20,7 @@ type Product struct {
 	CategoryName string    `json:"category_name,omitempty"`
 	ImageURL     string    `json:"image_url"`
 	InStock      bool      `json:"in_stock"`
+	Material     *string   `json:"material,omitempty"` // ← ДОБАВЛЕНО
 	CreatedAt    time.Time `json:"created_at"`
 }
 

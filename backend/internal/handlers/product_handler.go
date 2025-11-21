@@ -4,6 +4,7 @@ import (
 	"beladonna/backend/internal/models"
 	"beladonna/backend/internal/service"
 	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -34,6 +35,7 @@ func (h *ProductHandler) GetProducts(w http.ResponseWriter, r *http.Request) {
 
 	products, err := h.productService.GetProducts(filters)
 	if err != nil {
+		log.Println(err)
 		http.Error(w, "Error fetching products", http.StatusInternalServerError)
 		return
 	}
@@ -56,12 +58,14 @@ func (h *ProductHandler) GetProduct(w http.ResponseWriter, r *http.Request) {
 
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
+		log.Println(err)
 		http.Error(w, "Invalid product ID", http.StatusBadRequest)
 		return
 	}
 
 	product, err := h.productService.GetProductByID(id)
 	if err != nil {
+		log.Println(err)
 		http.Error(w, "Product not found", http.StatusNotFound)
 		return
 	}
@@ -78,6 +82,7 @@ func (h *ProductHandler) GetCategories(w http.ResponseWriter, r *http.Request) {
 
 	categories, err := h.productService.GetCategories()
 	if err != nil {
+		log.Println(err)
 		http.Error(w, "Error fetching categories", http.StatusInternalServerError)
 		return
 	}

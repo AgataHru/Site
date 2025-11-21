@@ -60,38 +60,72 @@ class CatalogManager {
     }
 
     async openProductModal(productId) {
-        try {
-            const response = await fetch(`/api/products/${productId}`);
-            const product = await response.json();
-            
-            const modalContent = document.getElementById('modalContent');
-            modalContent.innerHTML = `
-                <h2>${product.name}</h2>
-                ${product.image_url ? 
-                    `<img src="${product.image_url}" alt="${product.name}" class="modal-image">` :
-                    '<div style="text-align: center; font-size: 4rem; margin: 20px 0;">🪟</div>'
-                }
-                <p class="modal-price">${this.formatPrice(product.price)} ₽</p>
-                <div class="modal-details">
-                    <p><strong>Категория:</strong> ${product.category_name || 'Не указана'}</p>
-                    <p><strong>Описание:</strong> ${product.description || 'Описание отсутствует'}</p>
-                    <p><strong>Наличие:</strong> ${product.in_stock ? 'В наличии' : 'Нет в наличии'}</p>
+    try {
+        console.log('Загрузка информации о товаре ID:', productId);
+        
+        // === ИСПРАВИЛ: правильный URL для получения товара ===
+        const response = await fetch(`/api/product?id=${productId}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const product = await response.json();
+        console.log('Получены данные товара:', product);
+        
+        const modalContent = document.getElementById('modalContent');
+        if (!modalContent) {
+            throw new Error('Элемент modalContent не найден');
+        }
+        
+        modalContent.innerHTML = `
+            <h2>${product.name || 'Название не указано'}</h2>
+            ${product.image_url ? 
+                `<img src="${product.image_url}" alt="${product.name}" class="modal-image" onerror="this.style.display='none'">` :
+                '<div style="text-align: center; font-size: 4rem; margin: 20px 0;">🪟</div>'
+            }
+            <p class="modal-price">${this.formatPrice(product.price || 0)} ₽</p>
+            <div class="modal-details">
+                <p><strong>Материал:</strong> ${product.material || 'Не указан'}</p>
+                <p><strong>Категория:</strong> ${product.category_name || 'Не указана'}</p>
+                <p><strong>Описание:</strong> ${product.description || 'Описание отсутствует'}</p>
+                <p><strong>Наличие:</strong> ${product.in_stock ? 'В наличии' : 'Нет в наличии'}</p>
+            </div>
+            <div class="modal-actions">
+                <div class="quantity-selector">
+                    <button class="quantity-btn" onclick="cartManager.changeQuantity(-1)">-</button>
+                    <input type="number" class="quantity-input" id="modalQuantity" value="1" min="1" max="10">
+                    <button class="quantity-btn" onclick="cartManager.changeQuantity(1)">+</button>
                 </div>
-                <div class="modal-actions">
-                    <div class="quantity-selector">
-                        <button class="quantity-btn" onclick="cartManager.changeQuantity(-1)">-</button>
-                        <input type="number" class="quantity-input" id="modalQuantity" value="1" min="1" max="10">
-                        <button class="quantity-btn" onclick="cartManager.changeQuantity(1)">+</button>
-                    </div>
-                    <button class="add-to-cart-btn" onclick="cartManager.addToCart(${product.id}, parseInt(document.getElementById('modalQuantity').value))">
-                        Добавить в корзину
+                <button class="add-to-cart-btn" onclick="cartManager.addToCart(${product.id}, parseInt(document.getElementById('modalQuantity').value || 1))">
+                    Добавить в корзину
+                </button>
+            </div>
+        `;
+        
+        // === ДОБАВИЛ: Активируем модальное окно ===
+        document.getElementById('productModal').checked = true;
+        
+    } catch (error) {
+        console.error('Ошибка загрузки товара:', error);
+        
+        const modalContent = document.getElementById('modalContent');
+        if (modalContent) {
+            modalContent.innerHTML = `
+                <div style="text-align: center; padding: 40px;">
+                    <h2>Ошибка загрузки товара</h2>
+                    <p>Не удалось загрузить информацию о товаре</p>
+                    <p style="color: #666; font-size: 14px;">${error.message}</p>
+                    <button class="product-btn" onclick="document.getElementById('productModal').checked = false">
+                        Закрыть
                     </button>
                 </div>
             `;
-        } catch (error) {
-            console.error('Ошибка загрузки товара:', error);
-            this.showError('Не удалось загрузить информацию о товаре');
         }
+        
+        // Все равно открываем модальное окно чтобы показать ошибку
+        document.getElementById('productModal').checked = true;
+    }
     }
 
     setupEventListeners() {
@@ -112,6 +146,13 @@ class CatalogManager {
                 this.searchProducts();
             }
         });
+
+        const searchButton = document.querySelector('.search-btn');
+        if (searchButton) {
+            searchButton.addEventListener('click', () => {
+                this.searchProducts();
+            });
+        }
     }
 
     searchProducts() {

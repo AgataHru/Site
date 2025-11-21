@@ -17,7 +17,7 @@ func NewProductRepository(db *sql.DB) *ProductRepository {
 func (r *ProductRepository) GetProducts(filters models.ProductFilters) ([]models.Product, error) {
 	query := `
         SELECT p.id, p.name, p.description, p.price, p.category_id, 
-               c.name as category_name, p.image_url, p.in_stock, p.created_at
+               c.name as category_name, p.image_url, p.in_stock, p.material, p.created_at
         FROM products p
         LEFT JOIN categories c ON p.category_id = c.id
         WHERE 1=1
@@ -63,7 +63,7 @@ func (r *ProductRepository) GetProducts(filters models.ProductFilters) ([]models
 		var p models.Product
 		err := rows.Scan(
 			&p.ID, &p.Name, &p.Description, &p.Price, &p.CategoryID,
-			&p.CategoryName, &p.ImageURL, &p.InStock, &p.CreatedAt,
+			&p.CategoryName, &p.ImageURL, &p.InStock, &p.Material, &p.CreatedAt,
 		)
 		if err != nil {
 			return nil, err
@@ -77,7 +77,7 @@ func (r *ProductRepository) GetProducts(filters models.ProductFilters) ([]models
 func (r *ProductRepository) GetProductByID(id int) (*models.Product, error) {
 	query := `
         SELECT p.id, p.name, p.description, p.price, p.category_id, 
-               c.name as category_name, p.image_url, p.in_stock, p.created_at
+               c.name as category_name, p.image_url, p.in_stock, p.material, p.created_at
         FROM products p
         LEFT JOIN categories c ON p.category_id = c.id
         WHERE p.id = $1
@@ -88,7 +88,7 @@ func (r *ProductRepository) GetProductByID(id int) (*models.Product, error) {
 	var p models.Product
 	err := row.Scan(
 		&p.ID, &p.Name, &p.Description, &p.Price, &p.CategoryID,
-		&p.CategoryName, &p.ImageURL, &p.InStock, &p.CreatedAt,
+		&p.CategoryName, &p.ImageURL, &p.InStock, &p.Material, &p.CreatedAt,
 	)
 	if err != nil {
 		return nil, err
