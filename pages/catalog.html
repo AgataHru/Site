@@ -14,250 +14,62 @@
                     <div class="header-text">Салон штор «Беладонна»</div>
                 </div>
                 <div class="header-box">
-                    <button class="auth-btn" onclick="window.location.href='registration.html'">Войти</button>
+                    <!-- Кнопка входа (показывается когда пользователь не авторизован) -->
+                    <button class="auth-btn" id="loginButton" onclick="window.location.href='./login.html'">Войти</button>
+                    
+                    <!-- Личный кабинет (показывается когда пользователь авторизован) -->
+                    <div class="user-panel" id="userPanel" style="display: none;">
+                        <div class="user-info">
+                            <div class="user-name" id="userName">Имя пользователя</div>
+                            <div class="user-email" id="userEmail">email@example.com</div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="cart-btn" onclick="showCart()">
+                                🛒 Корзина (<span id="cartCount">0</span>)
+                            </button>
+                            <button class="logout-btn" onclick="logout()">Выйти</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="c">
-            <div class="categories-container">
-              <button class="categories-box">Общие</button>
-              <button class="categories-box">Классические</button>
-              <button class="categories-box">Современные</button>
-              <button class="categories-box">Специальные</button>
-            </div>
             
-            <!-- Добавленные карточки товаров -->
+            <!-- Заменяем статические карточки на динамические -->
             <div class="products-container">
-                <h2>Популярные товары</h2>
-                <div class="products-grid">
-                        <!-- Классические -->
-            <div class="product-card">
-                <div class="product-image">🌹</div>
-                <h3>"Милан" - Портьеры из сатина</h3>
-                <p class="product-price">4 990 ₽</p>
-                <p class="product-description">Элегантные портьеры из 100% сатина с антистатической обработкой</p>
-                <label for="modal1" class="product-btn">Подробнее</label>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">🏰</div>
-                <h3>"Версаль" - Атласные гардины</h3>
-                <p class="product-price">5 490 ₽</p>
-                <p class="product-description">Роскошные гардины с золотой вышивкой в классическом стиле</p>
-                <label for="modal2" class="product-btn">Подробнее</label>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">👑</div>
-                <h3>"Ампир" - Парчовые шторы</h3>
-                <p class="product-price">6 790 ₽</p>
-                <p class="product-description">Богатые шторы из парчи с кистями и бахромой</p>
-                <label for="modal3" class="product-btn">Подробнее</label>
-            </div>
-
-            <!-- Современные -->
-            <div class="product-card">
-                <div class="product-image">🪟</div>
-                <h3>"Лофт" - Рулонные системы</h3>
-                <p class="product-price">3 890 ₽</p>
-                <p class="product-description">Минималистичные рулонные шторы с механизмом фиксации</p>
-                <label for="modal4" class="product-btn">Подробнее</label>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">🌿</div>
-                <h3>"Эко" - Бамбуковые жалюзи</h3>
-                <p class="product-price">4 290 ₽</p>
-                <p class="product-description">Экологичные жалюзи из натурального бамбука</p>
-                <label for="modal5" class="product-btn">Подробнее</label>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">⚫</div>
-                <h3>"Моно" - Черные алюминиевые</h3>
-                <p class="product-price">3 990 ₽</p>
-                <p class="product-description">Стильные горизонтальные жалюзи в монохромном дизайне</p>
-                <label for="modal6" class="product-btn">Подробнее</label>
-            </div>
-
-            <!-- Специальные -->
-            <div class="product-card">
-                <div class="product-image">🛡️</div>
-                <h3>"Блэкаут" - Light Protect</h3>
-                <p class="product-price">7 290 ₽</p>
-                <p class="product-description">Полностью светонепроницаемые шторы с термоизоляцией</p>
-                <label for="modal7" class="product-btn">Подробнее</label>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">🚫</div>
-                <h3>"Антипыль" - Гипоаллергенные</h3>
-                <p class="product-price">5 890 ₽</p>
-                <p class="product-description">Специальные шторы для аллергиков с антипылевым покрытием</p>
-                <label for="modal8" class="product-btn">Подробнее</label>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">🔥</div>
-                <h3>"Сейф" - Огнестойкие</h3>
-                <p class="product-price">8 490 ₽</p>
-                <p class="product-description">Противопожарные шторы с сертификатом безопасности</p>
-                <label for="modal9" class="product-btn">Подробнее</label>
-            </div>
-
-            <!-- Модальные окна -->
-            <input type="checkbox" id="modal1" class="modal-toggle">
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="modal1" class="close">&times;</label>
-                    <h2>"Милан" - Портьеры из сатина</h2>
-                    <p class="modal-price">4 990 ₽</p>
-                    <div class="modal-details">
-                        <p><strong>Материал:</strong> 100% сатин высшего качества</p>
-                        <p><strong>Размеры:</strong> Ширина 140-300 см, Высота 220-280 см</p>
-                        <p><strong>Цвета:</strong> Бежевый, кремовый, шампань, молочный</p>
-                        <p><strong>Особенности:</strong> Антистатическая обработка, устойчивость к выцветанию, легкий уход</p>
-                        <p><strong>Уход:</strong> Машинная стирка при 30°C, щадящий отжим</p>
-                        <p><strong>Срок изготовления:</strong> 3-5 рабочих дней</p>
+                <h2>Каталог штор</h2>
+                
+                <!-- Поиск и фильтры -->
+                <div class="filters-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Поиск по названию..." class="search-input">
+                        <button onclick="searchProducts()" class="search-btn">Найти</button>
                     </div>
+                    
+                    <div class="category-filters">
+                        <button class="category-filter active" data-category="all">Все товары</button>
+                        <button class="category-filter" data-category="1">Классические</button>
+                        <button class="category-filter" data-category="2">Современные</button>
+                        <button class="category-filter" data-category="3">Римские</button>
+                        <button class="category-filter" data-category="4">Японские</button>
+                    </div>
+                </div>
+                
+                <!-- Контейнер для товаров -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Товары будут загружаться через JavaScript -->
+                    <div class="loading">Загрузка товаров...</div>
                 </div>
             </div>
 
-            <input type="checkbox" id="modal2" class="modal-toggle">
+            <!-- Модальное окно для товара -->
+            <input type="checkbox" id="productModal" class="modal-toggle">
             <div class="modal">
                 <div class="modal-content">
-                    <label for="modal2" class="close">&times;</label>
-                    <h2>"Версаль" - Атласные гардины</h2>
-                    <p class="modal-price">5 490 ₽</p>
-                    <div class="modal-details">
-                        <p><strong>Материал:</strong> Атлас с золотой вышивкой</p>
-                        <p><strong>Размеры:</strong> Ширина 160-320 см, Высота 240-300 см</p>
-                        <p><strong>Цвета:</strong> Бордовый, изумрудный, сапфировый, золотой</p>
-                        <p><strong>Особенности:</strong> Ручная вышивка, люрексовая нить, подкладка из вуали</p>
-                        <p><strong>Уход:</strong> Химчистка, не отбеливать</p>
-                        <p><strong>Срок изготовления:</strong> 7-10 рабочих дней</p>
+                    <label for="productModal" class="close">&times;</label>
+                    <div id="modalContent">
+                        <!-- Содержимое модального окна будет заполняться динамически -->
                     </div>
-                </div>
-            </div>
-
-            <input type="checkbox" id="modal3" class="modal-toggle">
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="modal3" class="close">&times;</label>
-                    <h2>"Ампир" - Парчовые шторы</h2>
-                    <p class="modal-price">6 790 ₽</p>
-                    <div class="modal-details">
-                        <p><strong>Материал:</strong> Натуральная парча с шелковыми нитями</p>
-                        <p><strong>Размеры:</strong> Ширина 180-350 см, Высота 250-320 см</p>
-                        <p><strong>Цвета:</strong> Пурпурный, королевский синий, изумруд</p>
-                        <p><strong>Особенности:</strong> Кисти из натурального хлопка, бахрома, усиленные петли</p>
-                        <p><strong>Уход:</strong> Только химчистка</p>
-                        <p><strong>Срок изготовления:</strong> 10-14 рабочих дней</p>
-                    </div>
-                </div>
-            </div>
-
-            <input type="checkbox" id="modal4" class="modal-toggle">
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="modal4" class="close">&times;</label>
-                    <h2>"Лофт" - Рулонные системы</h2>
-                    <p class="modal-price">3 890 ₽</p>
-                    <div class="modal-details">
-                        <p><strong>Материал:</strong> Полиэстер с ПВХ покрытием</p>
-                        <p><strong>Размеры:</strong> Под заказ (макс. ширина 250 см)</p>
-                        <p><strong>Цвета:</strong> Серый, черный, белый, графит</p>
-                        <p><strong>Особенности:</strong> Цепной механизм, фиксация в 5 положениях, моющиеся</p>
-                        <p><strong>Уход:</strong> Влажная очистка губкой</p>
-                        <p><strong>Срок изготовления:</strong> 2-4 рабочих дня</p>
-                    </div>
-                </div>
-            </div>
-
-            <input type="checkbox" id="modal5" class="modal-toggle">
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="modal5" class="close">&times;</label>
-                    <h2>"Эко" - Бамбуковые жалюзи</h2>
-                    <p class="modal-price">4 290 ₽</p>
-                    <div class="modal-details">
-                        <p><strong>Материал:</strong> Натуральный бамбук, хлопковые нити</p>
-                        <p><strong>Размеры:</strong> Под заказ (макс. ширина 200 см)</p>
-                        <p><strong>Цвета:</strong> Натуральный, темный, светлый бамбук</p>
-                        <p><strong>Особенности:</strong> Экологичный материал, регулировка света, антистатик</p>
-                        <p><strong>Уход:</strong> Сухая чистка щеткой</p>
-                        <p><strong>Срок изготовления:</strong> 5-7 рабочих дней</p>
-                    </div>
-                </div>
-            </div>
-
-            <input type="checkbox" id="modal6" class="modal-toggle">
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="modal6" class="close">&times;</label>
-                    <h2>"Моно" - Черные алюминиевые</h2>
-                    <p class="modal-price">3 990 ₽</p>
-                    <div class="modal-details">
-                        <p><strong>Материал:</strong> Алюминиевые ламели 25 мм</p>
-                        <p><strong>Размеры:</strong> Под заказ (макс. ширина 300 см)</p>
-                        <p><strong>Цвета:</strong> Матовый черный, антрацит</p>
-                        <p><strong>Особенности:</strong> Поворотно-подъемный механизм, защита от пыли</p>
-                        <p><strong>Уход:</strong> Влажная очистка</p>
-                        <p><strong>Срок изготовления:</strong> 3-5 рабочих дней</p>
-                    </div>
-                </div>
-            </div>
-
-            <input type="checkbox" id="modal7" class="modal-toggle">
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="modal7" class="close">&times;</label>
-                    <h2>"Блэкаут" - Light Protect</h2>
-                    <p class="modal-price">7 290 ₽</p>
-                    <div class="modal-details">
-                        <p><strong>Материал:</strong> Трехслойный полиэстер с акриловым покрытием</p>
-                        <p><strong>Размеры:</strong> Ширина 140-280 см, Высота 200-270 см</p>
-                        <p><strong>Цвета:</strong> Черный, темно-синий, шоколад</p>
-                        <p><strong>Особенности:</strong> 100% светонепроницаемость, шумоизоляция, терморегуляция</p>
-                        <p><strong>Уход:</strong> Машинная стирка при 40°C</p>
-                        <p><strong>Срок изготовления:</strong> 4-6 рабочих дней</p>
-                    </div>
-                </div>
-            </div>
-
-            <input type="checkbox" id="modal8" class="modal-toggle">
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="modal8" class="close">&times;</label>
-                    <h2>"Антипыль" - Гипоаллергенные</h2>
-                    <p class="modal-price">5 890 ₽</p>
-                    <div class="modal-details">
-                        <p><strong>Материал:</strong> Микрофибра с нано-покрытием</p>
-                        <p><strong>Размеры:</strong> Ширина 120-260 см, Высота 210-280 см</p>
-                        <p><strong>Цвета:</strong> Белый, серый, бежечный, салатовый</p>
-                        <p><strong>Особенности:</strong> Антибактериальная пропитка, отталкивает пыль, дышащий материал</p>
-                        <p><strong>Уход:</strong> Машинная стирка при 60°C</p>
-                        <p><strong>Срок изготовления:</strong> 5-7 рабочих дней</p>
-                    </div>
-                </div>
-            </div>
-
-            <input type="checkbox" id="modal9" class="modal-toggle">
-            <div class="modal">
-                <div class="modal-content">
-                    <label for="modal9" class="close">&times;</label>
-                    <h2>"Сейф" - Огнестойкие</h2>
-                    <p class="modal-price">8 490 ₽</p>
-                    <div class="modal-details">
-                        <p><strong>Материал:</strong> Огнеупорный полиэстер с керамическим покрытием</p>
-                        <p><strong>Размеры:</strong> Ширина 100-240 см, Высота 200-260 см</p>
-                        <p><strong>Цвета:</strong> Белый, серый, бежечный</p>
-                        <p><strong>Особенности:</strong> Сертификат МЧС, выдерживают до 400°C, самозатухающие</p>
-                        <p><strong>Уход:</strong> Влажная очистка, не стирать</p>
-                        <p><strong>Срок изготовления:</strong> 7-10 рабочих дней</p>
-                    </div>
-                </div>
-            </div>
                 </div>
             </div>
         </div>
@@ -272,5 +84,40 @@
             <a href="./about.html">О нас</a>
         </div>
     </div>
+
+    <!-- Модальное окно корзины -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3 class="cart-title">Корзина покупок</h3>
+                <button class="close-cart" onclick="closeCart()">×</button>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <!-- Товары будут добавляться динамически -->
+            </div>
+            
+            <div class="cart-total">
+                Итого: <span id="cartTotal">0 руб</span>
+            </div>
+            
+            <button class="checkout-btn" id="checkoutBtn" disabled>
+                Перейти к оформлению
+            </button>
+        </div>
+    </div>
+
+    <!-- В конце body -->
+    <script src="../js/catalog.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/user-panel.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница каталога загружена');
+            // Дополнительная логика для страницы каталога, если нужна
+        });
+    </script>
+
 </body>
 </html>

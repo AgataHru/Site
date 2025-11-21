@@ -23,6 +23,19 @@
             <div class="login-container">
                 <div class="login-form">
                     <h2>Вход в аккаунт</h2>
+                    
+                    <!-- Блок для ошибок -->
+                    <div id="errorAlert" class="alert alert-error" style="display: none;">
+                        <span id="errorMessage"></span>
+                        <button type="button" class="close-btn" onclick="closeError()">×</button>
+                    </div>
+                    
+                    <!-- Блок для успешных сообщений -->
+                    <div id="successAlert" class="alert alert-success" style="display: none;">
+                        <span id="successMessage"></span>
+                        <button type="button" class="close-btn" onclick="closeSuccess()">×</button>
+                    </div>
+                    
                     <form id="loginForm">
                         <div class="form-group">
                             <label for="email">Электронная почта *</label>
@@ -62,6 +75,7 @@
         </div>
     </div>
 
-    <script src="../scripts/login.js"></script>
+    <!-- ИСПРАВЛЕННЫЙ ПУТЬ -->
+    <script src="../js/login.js"></script>
 </body>
 </html>

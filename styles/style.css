@@ -955,3 +955,449 @@ ul, ol {
 .product-btn {
     cursor: pointer;
 }
+
+/* Стили для уведомлений */
+.alert {
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.3s ease-out;
+}
+
+.alert-error {
+    background-color: #fee;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #efffed;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.close-btn:hover {
+    opacity: 0.7;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Стили для ошибок в полях формы */
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+.form-group input.error {
+    border-color: #dc3545;
+}
+
+.form-group input.success {
+    border-color: #28a745;
+}
+
+/* Стили для личного кабинета */
+.user-panel {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: #f5ede5;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #e2c5b0;
+    min-width: 200px;
+}
+
+.user-panel.show {
+    display: flex !important;
+}
+
+.user-info {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2c5b0;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #534133;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    font-size: 14px;
+    color: #8d725e;
+}
+
+.user-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cart-btn, .logout-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-btn {
+    background: linear-gradient(135deg, #8d725e, #a08672);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-btn:hover {
+    background: linear-gradient(135deg, #a08672, #8d725e);
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    background: #f5ede5;
+    color: #534133;
+    border: 1px solid #e2c5b0;
+}
+
+.logout-btn:hover {
+    background: #e2c5b0;
+    color: #534133;
+}
+
+/* Стили для корзины */
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(83, 65, 51, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-modal.show {
+    display: flex !important;
+}
+
+.cart-content {
+    background: #fffbf8;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 3px solid #e2c5b0;
+    position: relative;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e2c5b0;
+}
+
+.cart-title {
+    font-size: 24px;
+    color: #534133;
+    margin: 0;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #8d725e;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-cart:hover {
+    background: #f5ede5;
+    color: #534133;
+}
+
+.cart-items {
+    margin-bottom: 20px;
+    min-height: 100px;
+}
+
+.empty-cart {
+    text-align: center;
+    color: #8d725e;
+    font-style: italic;
+    padding: 40px 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e2c5b0;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: bold;
+    color: #534133;
+    margin-bottom: 5px;
+}
+
+.item-price {
+    color: #8d725e;
+    font-size: 14px;
+}
+
+.item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 15px;
+}
+
+.quantity-btn {
+    background: #f5ede5;
+    border: 1px solid #e2c5b0;
+    border-radius: 3px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background: #e2c5b0;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+    background: #fee;
+}
+
+.cart-total {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: #534133;
+    padding-top: 15px;
+    border-top: 2px solid #e2c5b0;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #8d725e, #a08672);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.checkout-btn:hover {
+    background: linear-gradient(135deg, #a08672, #8d725e);
+    transform: translateY(-2px);
+}
+
+.checkout-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Стили для поиска и фильтров */
+.filters-container {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f5ede5;
+    border-radius: 10px;
+    border: 2px solid #e2c5b0;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.search-input {
+    padding: 12px 15px;
+    border: 2px solid #e2c5b0;
+    border-radius: 25px;
+    font-size: 16px;
+    width: 300px;
+    background: white;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #8d725e;
+}
+
+.search-btn {
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #8d725e, #a08672);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-btn:hover {
+    background: linear-gradient(135deg, #a08672, #8d725e);
+}
+
+.category-filters {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.category-filter {
+    padding: 10px 20px;
+    background: #fffbf8;
+    border: 2px solid #e2c5b0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-filter:hover,
+.category-filter.active {
+    background: linear-gradient(135deg, #8d725e, #a08672);
+    color: white;
+    border-color: #8d725e;
+}
+
+/* Стили для загрузки */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #8d725e;
+    font-size: 18px;
+}
+
+/* Кнопка добавления в корзину */
+.add-to-cart-btn {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background: linear-gradient(135deg, #229954, #27ae60);
+    transform: scale(1.05);
+}
+
+.add-to-cart-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Стили для модального окна товара */
+.modal-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    background: #f5ede5;
+    border: 1px solid #e2c5b0;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #e2c5b0;
+    border-radius: 5px;
+    padding: 5px;
+}

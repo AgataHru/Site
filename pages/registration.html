@@ -24,6 +24,19 @@
                 <div class="registration-form">
                     <h2>Регистрация</h2>
                     <form id="registrationForm">
+                        <!-- Блок для отображения ошибок -->
+                        <div id="errorAlert" class="alert alert-error" style="display: none;">
+                            <span id="errorMessage"></span>
+                            <button type="button" class="close-btn" onclick="closeError()">×</button>
+                        </div>
+                        
+                        <!-- Блок для успешных сообщений -->
+                        <div id="successAlert" class="alert alert-success" style="display: none;">
+                            <span id="successMessage"></span>
+                            <button type="button" class="close-btn" onclick="closeSuccess()">×</button>
+                        </div>
+
+
                         <div class="form-group">
                             <label for="firstName">Имя *</label>
                             <input type="text" id="firstName" name="firstName" required>
@@ -95,6 +108,6 @@
         </div>
     </div>
 
-    <script src="../scripts/register.js"></script>
+    <script src="../js/register.js"></script>
 </body>
 </html>

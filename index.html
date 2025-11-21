@@ -14,7 +14,22 @@
                     <div class="header-text">Салон штор «Беладонна»</div>
                 </div>
                 <div class="header-box">
-                    <button class="auth-btn" onclick="window.location.href='pages/registration.html'">Войти</button>
+                    <!-- Кнопка входа (показывается когда пользователь не авторизован) -->
+                    <button class="auth-btn" id="loginButton" onclick="window.location.href='pages/login.html'">Войти</button>
+                    
+                    <!-- Личный кабинет (показывается когда пользователь авторизован) -->
+                    <div class="user-panel" id="userPanel" style="display: none;">
+                        <div class="user-info">
+                            <div class="user-name" id="userName">Имя пользователя</div>
+                            <div class="user-email" id="userEmail">email@example.com</div>
+                        </div>
+                        <div class="user-actions">
+                            <button class="cart-btn" onclick="showCart()">
+                                🛒 Корзина (<span id="cartCount">0</span>)
+                            </button>
+                            <button class="logout-btn" onclick="logout()">Выйти</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,5 +105,40 @@
             <a href="pages/about.html">О нас</a>
         </div>
     </div>
+
+    <!-- Модальное окно корзины -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3 class="cart-title">Корзина покупок</h3>
+                <button class="close-cart" onclick="closeCart()">×</button>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <!-- Товары будут добавляться динамически -->
+            </div>
+            
+            <div class="cart-total">
+                Итого: <span id="cartTotal">0 руб</span>
+            </div>
+            
+            <button class="checkout-btn" id="checkoutBtn" disabled>
+                Перейти к оформлению
+            </button>
+        </div>
+    </div>
+
+    <!-- В конце body -->
+    <script src="js/user-panel.js"></script>
+    <script src="js/cart.js"></script>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Главная страница загружена');
+            // Каталог автоматически загрузится
+        });
+    </script>
+
 </body>
 </html>
