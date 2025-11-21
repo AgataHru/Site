@@ -1,3 +1,15 @@
+-- Пользователи
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    phone VARCHAR(20),
+    newsletter BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
 -- Категории товаров
 CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
