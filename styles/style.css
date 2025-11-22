@@ -1903,3 +1903,84 @@ ul, ol {
         font-size: 1.3rem;
     }
 }
+
+/* Стили для формы отзывов */
+.write-us-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.write-us-box {
+    padding: 8px;
+}
+
+.input-text {
+    width: 100%;
+    min-height: 100px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Стили для отображения отзывов */
+.feedbacks-container {
+    margin: 30px 0;
+}
+
+.feedback-item {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.feedback-header strong {
+    color: #333;
+    font-size: 16px;
+}
+
+.feedback-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.feedback-theme {
+    color: #444;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.feedback-message {
+    color: #333;
+    line-height: 1.5;
+}

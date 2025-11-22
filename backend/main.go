@@ -39,6 +39,10 @@ func main() {
 	productHandler := handlers.NewProductHandler(productService) // ДОБАВЛЕНО
 	cartHandler := handlers.NewCartHandler(cartService)          // ДОБАВЛЕНО
 
+	feedbackRepo := repository.NewFeedbackRepository(cfg.DB)
+	feedbackService := service.NewFeedbackService(feedbackRepo)
+	feedbackHandler := handlers.NewFeedbackHandler(feedbackService)
+
 	// Настройка CORS для разработки
 	corsMiddleware := func(next http.HandlerFunc) http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
@@ -68,6 +72,9 @@ func main() {
 	http.HandleFunc("/api/products", corsMiddleware(productHandler.GetProducts))
 	http.HandleFunc("/api/product", corsMiddleware(productHandler.GetProduct))
 	http.HandleFunc("/api/categories", corsMiddleware(productHandler.GetCategories))
+
+	http.HandleFunc("/api/feedback", feedbackHandler.CreateFeedback)
+	http.HandleFunc("/api/feedbacks", feedbackHandler.GetFeedbacks)
 
 	// === ДОБАВЛЕНО: Маршруты для корзины ===
 	http.HandleFunc("/api/cart", func(w http.ResponseWriter, r *http.Request) {

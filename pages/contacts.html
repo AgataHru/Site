@@ -34,23 +34,36 @@
             </div>
         </div>
         <div class="c">
-          <h1>Контакты</h1>
-          <h2>Напишите нам</h2>
-          <div class="write-us-container">
-            <div class="write-us-box">Имя</div>
-            <div class="write-us-box"><input type="text" value="" id="name"></div>
-            <div class="write-us-box">Email</div>
-            <div class="write-us-box"><input type="text" value="" id="email"></div>
-            <div class="write-us-box">Тема</div>
-            <div class="write-us-box"><input type="text" value="" id="theme"></div>
-            <div class="write-us-box">Текстовое поле</div>
-            <div class="write-us-box"><textarea class="input-text" type="text" value="" id="text"></textarea></div>
-          </div>
-        <h2>Наши контакты</h2>
-        <p>Контактный номер телефона компании: +7 (495) 021-87-36</p>
-        <p>Адрес: 127247, Москва, Дмитровское шоссе, 100, строение 2</p>
-        <p>Email: info@belladone.ru</p>
-        <img src="../images/map.jpg">
+            <h1>Контакты</h1>
+            
+            <!-- Форма отправки отзыва -->
+            <h2>Напишите нам</h2>
+            <div class="write-us-container">
+                <div class="write-us-box">Имя</div>
+                <div class="write-us-box"><input type="text" value="" id="name" required></div>
+                <div class="write-us-box">Email</div>
+                <div class="write-us-box"><input type="email" value="" id="email" required></div>
+                <div class="write-us-box">Тема</div>
+                <div class="write-us-box"><input type="text" value="" id="theme"></div>
+                <div class="write-us-box">Сообщение</div>
+                <div class="write-us-box"><textarea class="input-text" type="text" value="" id="text" required></textarea></div>
+                <div class="write-us-box"></div>
+                <div class="write-us-box">
+                    <button class="submit-btn" onclick="submitFeedback()">Отправить отзыв</button>
+                </div>
+            </div>
+
+            <!-- Блок для отображения существующих отзывов -->
+            <h2>Отзывы наших клиентов</h2>
+            <div id="feedbacksContainer" class="feedbacks-container">
+                <!-- Отзывы будут загружаться здесь -->
+            </div>
+
+            <h2>Наши контакты</h2>
+            <p>Контактный номер телефона компании: +7 (495) 021-87-36</p>
+            <p>Адрес: 127247, Москва, Дмитровское шоссе, 100, строение 2</p>
+            <p>Email: info@belladone.ru</p>
+            <img src="../images/map.jpg">
         </div>
         <div class="f">© 2025 Салон штор "Беладонна". Все права защищены. 
             <br>Контактный номер телефона компании: +7 (495) 021-87-36 
@@ -128,6 +141,7 @@
     <script src="../js/cookies.js"></script>
     <script src="../js/cart.js"></script>
     <script src="../js/user-panel.js"></script>
+    <script src="../js/feedback.js"></script> 
 
     <script>
         // Инициализация при загрузке страницы

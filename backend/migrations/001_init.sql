@@ -48,6 +48,17 @@ CREATE TABLE IF NOT EXISTS sessions (
     created_at TIMESTAMP DEFAULT NOW()
 );
 
+-- Добавьте это в существующий файл миграций
+CREATE TABLE IF NOT EXISTS feedbacks (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    theme VARCHAR(200),
+    message TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    is_visible BOOLEAN DEFAULT true
+);
+
 -- Вставляем тестовые данные
 INSERT INTO categories (name, description) VALUES 
 ('Классические', 'Элегантные классические дизайны'),
