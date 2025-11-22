@@ -7,7 +7,34 @@ document.addEventListener('DOMContentLoaded', function() {
         // Сброс ошибок
         clearErrors();
         hideAlerts();
-        
+
+        // Валидация обязательных полей
+        const requiredFields = ['firstName', 'lastName', 'email'];
+        for (let field of requiredFields) {
+            const value = document.getElementById(field).value.trim();
+            if (!value) {
+                showError(field + 'Error', 'Это поле обязательно для заполнения');
+                showServerError('Пожалуйста, заполните все обязательные поля.');
+                return;
+            }
+        }
+
+        // Валидация email
+        const email = document.getElementById('email').value.trim();
+        if (!isValidEmail(email)) {
+            showError('emailError', 'Введите корректный email адрес');
+            showServerError('Пожалуйста, введите корректный email адрес.');
+            return;
+        }
+
+        // Валидация номера телефона (строгий формат +71231234567)
+        const phone = document.getElementById('phone').value.trim();
+        if (phone && !isValidPhone(phone)) {
+            showError('phoneError', 'Номер телефона должен быть в формате +70001111111');
+            showServerError('Номер телефона должен быть в формате +70001111111');
+            return;
+        }
+                
         // Валидация паролей
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
@@ -157,3 +184,17 @@ function closeError() {
 function closeSuccess() {
     document.getElementById('successAlert').style.display = 'none';
 }
+
+function isValidEmail(email) {
+        // Простая проверка формата email: текст@текст.текст
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+function isValidPhone(phone) {
+        // Строгая проверка формата: +71231234567 (ровно 12 символов, начинается с +7)
+        const phoneRegex = /^\+7\d{10}$/;
+        return phoneRegex.test(phone);
+    }
+
+
